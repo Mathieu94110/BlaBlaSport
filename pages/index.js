@@ -6,8 +6,6 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-import Api from '../service/Api.js'
-
 
 
 
@@ -18,7 +16,7 @@ class Home extends Component {
 		super(props);
 
 		this.state = {
-
+			username : "BOB"
 		};
 		
 
@@ -47,10 +45,7 @@ class Home extends Component {
 
 		    </Head>
 
-
-
-				<section className="homeSection">
-					<header className="header">
+			<header className="header">
 						<div className="container">
 							<div className="row">
 								<div className="col-md-4">
@@ -60,7 +55,7 @@ class Home extends Component {
 
 										</div>
 										<div style={{"flex":2}}>
-											<p className="logoText">My Kolor'z</p>
+											<p className="logoText">BlaBlaSport</p>
 										</div>
 									</div>
 								</div>
@@ -75,7 +70,7 @@ class Home extends Component {
 											<Button color="link" className="link" >NOUS CONTACTER</Button>
 										</div>
 										<div style={{"flex":1}}>
-											<Button color="link" className="link">MON COMPTE</Button>
+											<Button color="link" className="link" href="/login">MON COMPTE</Button>
 										</div>
 									</div>
 
@@ -85,11 +80,14 @@ class Home extends Component {
 
 
 					</header>
-					<Container style={{marginTop:"-100px"}}>
+
+				<section className="homeSection">
+
+					<Container style={{marginTop:""}}>
 					 <Row>
 						 <Col sm="8">
 							<div className="title">
-		 						<div>BlaBlaSport vous permet de trouver un partenaire de sport à tout moment</div>
+		 						<div>Bonjour {this.state.username} BlaBlaSport vous permet de trouver un partenaire de sport à tout moment</div>
 								<div className="text-box">
 									<div>Simple</div>
 									<div>Rapide</div>

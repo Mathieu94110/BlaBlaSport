@@ -277,3 +277,14 @@ table{
 	padding:100px;
 	text-align: center;
 }
+
+
+.bgtennis{
+	background: url(/static/images/tennis.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	position:relative;
+	height:100vh;
+}
