@@ -1,0 +1,7 @@
+.homeContent{
+    background-size: cover;
+    background-color:red;
+    height:100%;
+    width:100%;
+    background: url(../static/images/background.jpg) no-repeat center center fixed;
+}

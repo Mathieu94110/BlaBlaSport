@@ -1,0 +1,9 @@
+
+
+{
+	"username": "test",
+	"password": "aaaaaa",
+	"url": "51.254.97.31",
+	"port": "27017",
+	"dbname": "admin"
+}
