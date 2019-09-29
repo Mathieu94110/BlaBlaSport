@@ -64,7 +64,7 @@ class Home extends Component {
 
 									<div className="nav">
 										<div style={{"flex":1}}>
-											<Button color="link" className="link" >A PROPOS</Button>
+											<Button color="link" className="link" href="/about" >A PROPOS</Button>
 										</div>
 										<div style={{"flex":1}}>
 											<Button color="link" className="link" >NOUS CONTACTER</Button>
