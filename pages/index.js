@@ -55,7 +55,7 @@ class Home extends Component {
 
 										</div>
 										<div style={{"flex":2}}>
-											<p className="logoText">BlaBlaSport</p>
+											<p className="logoText">BlaBla</p>
 										</div>
 									</div>
 								</div>
