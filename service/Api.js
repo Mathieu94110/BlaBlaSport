@@ -14,11 +14,11 @@ class Api {
         })
     }
 
-    getMagasins(category, location){
-        return axios.post("/api/magasin/getMagasins", {
-            category: category,
-            location: location
-        });
+    login(email,password){
+        return axios.post("/api/user/login", {
+            email: email,
+            password: password
+        })
     }
 
 

@@ -19,4 +19,15 @@ router.post("/createUser", (req, res)=>{
     })
 })
 
+
+router.post("/login", (req, res)=>{
+    User.findOne({email: req.body.email, password: req.body.password}, (err, user)=>{
+        if(user == null){
+            res.send("Mdp ou email invalides")
+        }else{
+            res.send(user)
+        }
+    })
+})
+
 module.exports = router;

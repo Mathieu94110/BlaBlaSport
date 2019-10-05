@@ -37,7 +37,13 @@ export default class Login extends Component {
 
     createUser = () =>{
         this.api.createUser(this.state.name, this.state.email, this.state.password).then(res=>{
-            console.log(res)
+            console.log(res.data)
+        })
+    }
+
+    login = () =>{
+        this.api.login(this.state.email, this.state.password).then(res=>{
+            console.log(res.data)
         })
     }
 
@@ -64,17 +70,17 @@ export default class Login extends Component {
                                     <FormGroup row>
                                     <Label for="exampleEmail" sm={2}>Email</Label>
                                     <Col sm={10}>
-                                        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                                        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" onChange={this.handleInputChange}/>
                                     </Col>
                                     </FormGroup>
                                     <FormGroup row>
                                     <Label for="examplePassword" sm={2}>Password</Label>
                                     <Col sm={10}>
-                                        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                                        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" onChange={this.handleInputChange} />
                                     </Col>
                                     </FormGroup>
                                 
-                                    <Button style={{alignSelf:"center"}}>Se connecter</Button>
+                                    <Button style={{alignSelf:"center"}} onClick={this.login}>Se connecter</Button>
                                     <Button color="link" onClick={this.switch}>Pas encore de compte ? Crééz un compte</Button>
                                 </div>
                                 : 
