@@ -15,12 +15,15 @@ nextApp.prepare().then(() => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use('/api/index', require('./routes/index'))
+    app.use('/api/user', require('./routes/user'))
+
+    
     app.get('*', (req,res) => {
         return handle(req,res) // for all the react stuff
     })
 
 
-    /*
+    
     model.connect(function (){
 
       app.listen(PORT, err => {
@@ -29,10 +32,7 @@ nextApp.prepare().then(() => {
       })
     });
 
-     */
-    app.listen(PORT, err => {
-        if (err) throw err;
-        console.log(`ready at http://localhost:${PORT}`)
-    })
+     
+
 
 })

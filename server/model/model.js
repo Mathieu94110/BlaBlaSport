@@ -12,11 +12,11 @@ var mongoose = require('mongoose');
 
 var connect = function (callback){
 	mongoose.set("debug", true);
-	mongoose.connect("mongodb://"+mongoconfig.username+":"+mongoconfig.password+"@"+mongoconfig.url+":"+mongoconfig.port+"/"+mongoconfig.dbname);
+	mongoose.connect("mongodb+srv://mathieu:azerty@blablasport-2g82v.mongodb.net/mathieu?retryWrites=true&w=majority");
 	var db = mongoose.connection;
 	db.on("error", console.error.bind(console," Connection error"));
 	db.once("open", function (){
-		console.log('Super, vous êtes connecté');
+		console.log('Super, vous êtes connecté à la base de données');
 		callback();
 	});
 };
