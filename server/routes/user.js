@@ -3,9 +3,6 @@ const router = express.Router()
 const User = require("../model/user").User
 
 
-router.get('/test', (req, res) => {
-    console.log("test")
-})
 
 // route pour créer un user
 router.post("/createUser", (req, res)=>{
@@ -19,7 +16,7 @@ router.post("/createUser", (req, res)=>{
     })
 })
 
-
+// route pour se logger
 router.post("/login", (req, res)=>{
     User.findOne({email: req.body.email, password: req.body.password}, (err, user)=>{
         if(user == null){
