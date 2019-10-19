@@ -38,12 +38,21 @@ export default class Login extends Component {
     createUser = () =>{
         this.api.createUser(this.state.name, this.state.email, this.state.password).then(res=>{
             console.log(res.data)
+            if (res.data.success){
+                alert ("VOus avez bien crré un compte.")
+            }else{
+                alert ("un utilisateur éxiste déja")
+            }
         })
     }
 
     login = () =>{
         this.api.login(this.state.email, this.state.password).then(res=>{
-            console.log(res.data)
+            if(res.data.success){
+                window.location = "/user-template"
+            }else{
+                alert(res.data.message)
+            }
         })
     }
 
