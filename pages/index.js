@@ -5,7 +5,7 @@ import { Alert, Container, Row, Col, Button, Form, FormGroup, Label, Input, Form
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-
+import CarouselSection from "../components/CarouselSection"
 
 
 
@@ -116,9 +116,10 @@ class Home extends Component {
 				</section>
 
 				<section className="carouselSection">
-					
+					<CarouselSection />
 				</section>
 
+				
 				<section className="searchSection">
 					
 				</section>
