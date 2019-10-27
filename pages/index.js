@@ -16,12 +16,24 @@ class Home extends Component {
 		super(props);
 
 		this.state = {
-			username : "BOB"
+			username : "Tata",
+			bgList:["homeSection1", "homeSection2","homeSection3"],
+            selectedBG: 0
 		};
 		
 
 	}
 
+	componentDidMount(){
+        setInterval(()=>{
+			if(this.state.selectedBG == this.state.bgList.length-1){
+				this.setState({selectedBG:0})
+			}
+			let index = this.state.selectedBG
+			index = index + 1
+            this.setState({selectedBG: index})
+        }, 5000)
+    }
 	
 
 	handleInputChange = (event) =>{
@@ -81,7 +93,7 @@ class Home extends Component {
 
 					</header>
 
-				<section className="homeSection">
+				<section className={this.state.bgList[this.state.selectedBG]}>
 
 					<Container style={{marginTop:""}}>
 					 <Row>

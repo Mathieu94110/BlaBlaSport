@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Head from 'next/head';
 
 import { Alert, Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+
 import Api from "../service/Api"
 
 export default class Login extends Component {
@@ -15,11 +15,13 @@ export default class Login extends Component {
             showLogin: true, // variable boolean qui change en fonction du formulaire login ou inscription
             name: null,
             email: null,
-            password: null
+            password: null,
+            message: null
 		};
 		
-
     }
+
+
 
     handleInputChange = (event) =>{
 		const target = event.target;
@@ -41,7 +43,7 @@ export default class Login extends Component {
             if (res.data.success){
                 alert ("VOus avez bien crré un compte.")
             }else{
-                alert ("un utilisateur éxiste déja")
+                this.setState({message: "Il existe déja un compte avec cette adresse mail, veuillez vous connecter"})
             }
         })
     }
@@ -51,7 +53,7 @@ export default class Login extends Component {
             if(res.data.success){
                 window.location = "/user-template"
             }else{
-                alert(res.data.message)
+                this.setState({message: res.data.message})
             }
         })
     }
@@ -74,18 +76,16 @@ export default class Login extends Component {
                         <Col sm="3"></Col>
                         <Col sm="6">
                             {this.state.showLogin == true ?
-                                <div>
+                                <div className="cardCustom">
                                     Login
                                     <FormGroup row>
-                                    <Label for="exampleEmail" sm={2}>Email</Label>
                                     <Col sm={10}>
-                                        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" onChange={this.handleInputChange}/>
+                                        <Input type="email" name="email" id="exampleEmail" placeholder="Email" onChange={this.handleInputChange}/>
                                     </Col>
                                     </FormGroup>
                                     <FormGroup row>
-                                    <Label for="examplePassword" sm={2}>Password</Label>
                                     <Col sm={10}>
-                                        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" onChange={this.handleInputChange} />
+                                        <Input type="password" name="password" id="examplePassword" placeholder="Mot de passe" onChange={this.handleInputChange} />
                                     </Col>
                                     </FormGroup>
                                 
@@ -93,24 +93,21 @@ export default class Login extends Component {
                                     <Button color="link" onClick={this.switch}>Pas encore de compte ? Crééz un compte</Button>
                                 </div>
                                 : 
-                                <div>
+                                <div className="cardCustom">
                                     Inscription
                                     <FormGroup row>
-                                    <Label for="exampleName" sm={2}>Nom</Label>
                                     <Col sm={10}>
-                                        <Input type="text" name="name" id="exampleName" placeholder="with a placeholder" onChange={this.handleInputChange}/>
+                                        <Input type="text" name="name" id="exampleName" placeholder="Votre nom complet" onChange={this.handleInputChange}/>
                                     </Col>
                                     </FormGroup>
                                     <FormGroup row>
-                                    <Label for="exampleEmail" sm={2}>Email</Label>
                                     <Col sm={10}>
-                                        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" onChange={this.handleInputChange}/>
+                                        <Input type="email" name="email" id="exampleEmail" placeholder="Votre Email" onChange={this.handleInputChange}/>
                                     </Col>
                                     </FormGroup>
                                     <FormGroup row>
-                                    <Label for="examplePassword" sm={2}>Password</Label>
                                     <Col sm={10}>
-                                        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" onChange={this.handleInputChange}/>
+                                        <Input type="password" name="password" id="examplePassword" placeholder="Votre mot de passe" onChange={this.handleInputChange}/>
                                     </Col>
                                     </FormGroup>
                                     <Button style={{alignSelf:"center"}} onClick={this.createUser}>S'inscrire</Button>
@@ -118,11 +115,18 @@ export default class Login extends Component {
                                 </div>
 
                             }
-
+                            {
+                                this.state.message != null ?
+                                <Alert color="danger" style={{marginTop:"20px"}}>
+                                    {this.state.message}
+                                </Alert>
+                                : null
+                            }
+  
                         </Col>
                         <Col sm="3"></Col>
                     </Row>
-                    
+
                 </Container>
 
 
