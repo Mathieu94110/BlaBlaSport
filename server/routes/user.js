@@ -1,6 +1,18 @@
 const express = require('express')
 const router = express.Router()
 const User = require("../model/user").User
+const jwt = require('jwt-simple');
+
+const secret = "M}SN^?gMs}L{eH";
+
+
+
+
+
+
+
+
+
 
 function checkUser(email,password){
     return new Promise ((resolve , reject)=> {
@@ -48,9 +60,13 @@ router.post("/createUser", (req, res)=>{
 router.post("/login", (req, res)=>{
     checkUser(req.body.email , req.body.password).then(data=>{
         let user= data.user;
+        // génération du token si le user ok.
+        let token = jwt.encode(user._id, secret)
+
         res.json({
             success: true,
-            user : user
+            user : user,
+            token: token
         })
     }).catch(err=>{
         res.json ({

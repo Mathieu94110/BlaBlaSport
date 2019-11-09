@@ -17,10 +17,19 @@ export default class Login extends Component {
             email: null,
             password: null,
             message: null
-		};
+        };
+        
+
 		
     }
 
+
+        componentDidMount(){
+            let token = localStorage.getItem('token')
+            if(token){
+                window.location = "/user-template"
+            }
+        }
 
 
     handleInputChange = (event) =>{
@@ -51,6 +60,8 @@ export default class Login extends Component {
     login = () =>{
         this.api.login(this.state.email, this.state.password).then(res=>{
             if(res.data.success){
+                console.log(res.data)
+                localStorage.setItem("token", res.data.token)
                 window.location = "/user-template"
             }else{
                 this.setState({message: res.data.message})
