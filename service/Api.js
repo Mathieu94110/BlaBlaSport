@@ -34,6 +34,10 @@ class Api {
         )
     }
 
+    getSports(){
+        return axios.get("/api/user/getSports");
+    }
+
 
 }
 

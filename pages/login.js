@@ -60,8 +60,8 @@ export default class Login extends Component {
     login = () =>{
         this.api.login(this.state.email, this.state.password).then(res=>{
             if(res.data.success){
-                console.log(res.data)
-                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("user", JSON.stringify(res.data.user));
                 window.location = "/user-template"
             }else{
                 this.setState({message: res.data.message})

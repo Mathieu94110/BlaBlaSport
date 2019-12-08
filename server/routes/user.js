@@ -87,5 +87,14 @@ router.post("/createSport",(req,res)=>{
     res.send(200)
 })
 
+//Route pour récupérer les sports 
 
+router.get("/getSports",(req,res)=>{
+Sport.find((err, sports)=>{
+    console.log(sports)
+    res.json({
+        sports: sports
+    })
+})
+})
 module.exports = router;

@@ -325,6 +325,19 @@ table{
 	padding:20px;
 	border-radius:5px;
 }
+.sportImage{
+width:100px;
+height: 100px;
+
+}
+.sportImage:hover{
+	opacity: 0.7;
+	cursor: pointer;
+
+}
+
+
+
 
 @keyframes fadein {
     from { opacity: 0; }
