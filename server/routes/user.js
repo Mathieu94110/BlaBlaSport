@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require("../model/user").User
+const Sport = require("../model/sport").Sport
 const jwt = require('jwt-simple');
 
 const secret = "M}SN^?gMs}L{eH";
@@ -75,5 +76,16 @@ router.post("/login", (req, res)=>{
         })
     })
 })
+
+
+// route pour creer sport
+
+router.post("/createSport",(req,res)=>{
+    let sport = new Sport()
+    sport.nom = req.body.nom
+    sport.save()
+    res.send(200)
+})
+
 
 module.exports = router;

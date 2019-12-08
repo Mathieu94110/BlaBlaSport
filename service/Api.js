@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Axios from 'axios';
 
 
 class Api {
@@ -19,6 +20,18 @@ class Api {
             email: email,
             password: password
         })
+    }
+
+
+    createSport(nom){
+        return axios.post("/api/user/createSport",{
+        
+            nom:nom
+
+        }
+        
+
+        )
     }
 
 
