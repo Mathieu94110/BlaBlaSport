@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Alert, Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import { Badge } from 'reactstrap';
 import CarouselSection from "../components/CarouselSection"
 
 
@@ -17,7 +17,10 @@ class Home extends Component {
 		this.state = {
 			username : "Tata",
 			bgList:["homeSection1", "homeSection2","homeSection3"],
-            selectedBG: 0
+			selectedBG: 0,
+			date: new Date(),
+			activated : true,
+			size : 50
 		};
 		
 
@@ -31,8 +34,17 @@ class Home extends Component {
 			let index = this.state.selectedBG
 			index = index + 1
             this.setState({selectedBG: index})
-        }, 5000)
-    }
+		}, 5000)
+		
+		this.timer = setInterval(()=>{
+			console.log(this.state.date)
+			this.setState({date:new Date()})
+		}, 1000)
+	}
+	
+	componentWillUnmount(){
+		clearInterval(this.timer)
+	}
 	
 
 	handleInputChange = (event) =>{
@@ -42,7 +54,33 @@ class Home extends Component {
 		  [name]: target.value
 		});
 	}
+	stopInterval = ()=>{
+		this.setState({
+			activated:!this.state.activated
+		}, ()=>{
+			if(this.state.activated === false){
+				console.log("Stopping")
+				clearInterval(this.timer)
+			}else{
+				this.timer = setInterval(()=>{
+					console.log(this.state.date)
+					this.setState({date:new Date()})
+				}, 1000)
+			}
+		})
 
+	}
+	changeSize = ()=>{
+		this.setState({
+			size: this.state.size+10
+		})
+	}
+
+	decreaseSize = () =>{
+		this.setState({
+			size: this.state.size-30
+		})
+	}
 
 	render(){
 
@@ -93,6 +131,19 @@ class Home extends Component {
 					</header>
 
 				<section className={this.state.bgList[this.state.selectedBG]}>
+				<div>
+					{this.state.date.toLocaleDateString()} {this.state.date.toLocaleTimeString()}
+					<Button onClick={this.stopInterval} color={this.state.activated=== true? "success":"danger"} >
+						 
+
+						{this.state.activated==true? "Arrêter le compteur": "Redémarrer le compteur"}
+					</Button>
+
+				</div>
+				<div onDoubleClick={this.decreaseSize} onClick={this.changeSize} style={{width:this.state.size+"px", height:this.state.size+"px", backgroundColor:"green"}}>
+				
+				</div>
+
 
 					<Container style={{marginTop:""}}>
 					 <Row>
