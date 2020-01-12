@@ -10,23 +10,21 @@ import {
   Label
 } from "reactstrap";
 
-class Join extends React.Component {
+class Todo extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.u);
   }
-render(){
-    return(
-
+  render() {
+    return (
       <div>
-        <button>Joindre la partie</button>
-        
-      {this.props.test}
-      </div>
+        <form>
+          <Input/>
+        </form>
 
-        
-    )
-}
+     </div>
+
+   )
+ }
 }
 
-export default Join;
+export default Todo;
