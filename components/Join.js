@@ -15,18 +15,15 @@ class Join extends React.Component {
     super(props);
     console.log(this.props.u);
   }
-render(){
-    return(
-
+  render() {
+    return (
       <div>
         <button>Joindre la partie</button>
-        
-      {this.props.test}
-      </div>
 
-        
-    )
-}
+        {this.props.test}
+      </div>
+    );
+  }
 }
 
 export default Join;

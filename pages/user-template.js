@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Head from "next/head";
 import Demande from "../components/demande";
 import Join from "../components/Join";
-
 import {
   Dropdown,
   DropdownToggle,
@@ -11,8 +10,10 @@ import {
   Container,
   Row,
   Col,
-  Button
-  
+  Button,
+  Label,
+  Input,
+  FormGroup
 } from "reactstrap";
 
 import Api from "../service/Api";
@@ -26,7 +27,9 @@ export default class extends Component {
       user: {},
       token: null,
       openDropdown: false,
-      sports: []
+      sports: [],
+      category: "Football",
+      categories: []
     };
   }
   componentDidMount() {
@@ -185,11 +188,7 @@ export default class extends Component {
           lastName={"Renault"}
           sport={"Football"}
         />
-        <Join
-        test={""}
-        
-        
-        />
+        <Join test={""} />
       </div>
     );
   }

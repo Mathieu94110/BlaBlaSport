@@ -34,7 +34,6 @@ class Task extends React.Component {
         </p>
         <Button onClick={this.changeDone}>La puissance</Button>
         {this.state.visible == true ? <p>la puissance</p> : <p>Relou</p>}
-        
       </div>
     );
   }
