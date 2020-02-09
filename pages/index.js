@@ -16,6 +16,9 @@ import { ListGroup, ListGroupItem } from "reactstrap";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { Badge } from "reactstrap";
 import CarouselSection from "../components/CarouselSection";
+import MapComponent from "../components/mapComponent";
+let centres = require("../public/data.json");
+centres = centres.slice(1, 100);
 
 class Home extends Component {
   constructor(props) {
@@ -42,7 +45,6 @@ class Home extends Component {
     }, 5000);
 
     this.timer = setInterval(() => {
-      console.log(this.state.date);
       this.setState({ date: new Date() });
     }, 1000);
   }
@@ -189,6 +191,10 @@ class Home extends Component {
         <section className="carouselSection">
           <CarouselSection />
         </section>
+
+        <div className="map">
+          <MapComponent centres={centres} />
+        </div>
 
         <section className="searchSection"></section>
       </div>
