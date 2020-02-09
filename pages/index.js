@@ -23,16 +23,37 @@ centres = centres.slice(1, 100);
 class Home extends Component {
   constructor(props) {
     super(props);
-
+    let categories = [...new Set(centres.map(sport => sport.fields.eqt_type))];
     this.state = {
       username: "Tata",
       bgList: ["homeSection1", "homeSection2", "homeSection3"],
       selectedBG: 0,
       date: new Date(),
       activated: true,
-      size: 50
+      size: 50,
+      categories: categories,
+      categorie: categories[0],
+      centres: centres
     };
+
+    console.log(categories);
   }
+
+  handleSelectChange = event => {
+    const target = event.target;
+    const name = target.name;
+    this.setState(
+      {
+        [name]: target.value
+      },
+      () => {
+        let newcentres = centres.filter(
+          centre => centre.fields.eqt_type == target.value
+        );
+        this.setState({ centres: newcentres });
+      }
+    );
+  };
 
   componentDidMount() {
     setInterval(() => {
@@ -191,9 +212,20 @@ class Home extends Component {
         <section className="carouselSection">
           <CarouselSection />
         </section>
-
+        <div>
+          <Input
+            type="select"
+            name="categorie"
+            value={this.state.categorie}
+            onChange={this.handleSelectChange}
+          >
+            {this.state.categories.map((categorie, index) => {
+              return <option key={index}>{categorie}</option>;
+            })}
+          </Input>
+        </div>
         <div className="map">
-          <MapComponent centres={centres} />
+          <MapComponent centres={this.state.centres} />
         </div>
 
         <section className="searchSection"></section>
