@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 
 var connect = function (callback){
 	mongoose.set("debug", true);
-	mongoose.connect("mongodb+srv://mathieu:azerty@blablasport-2g82v.mongodb.net/mathieu?retryWrites=true&w=majority");
+	mongoose.connect("mongodb+srv://john:azerta@blablasport.2g82v.mongodb.net/<dbname>?retryWrites=true&w=majority");
 	var db = mongoose.connection;
 	db.on("error", console.error.bind(console," Connection error"));
 	db.once("open", function (){
