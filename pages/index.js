@@ -26,7 +26,7 @@ class Home extends Component {
     super(props);
     let categories = [...new Set(centres.map(sport => sport.fields.eqt_type))];
     this.state = {
-      username: "Tata",
+      username: "Tonton",
       bgList: ["homeSection1", "homeSection2", "homeSection3"],
       selectedBG: 0,
       date: new Date(),
@@ -113,17 +113,11 @@ class Home extends Component {
   };
 
   render() {
-    return (
-      <div className="body">
+    return <div className="body">
         <Head>
           <title>BlaBlaSport</title>
           <link href="/static/styles.css" rel="stylesheet" />
-          <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-            integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-            crossOrigin="anonymous"
-          />
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossOrigin="anonymous" />
         </Head>
 
         <header className="header">
@@ -132,11 +126,7 @@ class Home extends Component {
               <div className="col-md-4">
                 <div style={{ display: "flex", width: "200px" }}>
                   <div style={{ flex: 1 }}>
-                    <img
-                      alt="logo"
-                      src="/static/images/logo.png"
-                      className="logo"
-                    />
+                    <img alt="logo" src="/static/images/logo.png" className="logo" />
                   </div>
                   <div style={{ flex: 2 }}>
                     <p className="logoText">BlaBla</p>
@@ -161,6 +151,7 @@ class Home extends Component {
                       MON COMPTE
                     </Button>
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -168,27 +159,8 @@ class Home extends Component {
         </header>
 
         <section className={this.state.bgList[this.state.selectedBG]}>
-          <div>
-            {this.state.date.toLocaleDateString()}{" "}
-            {this.state.date.toLocaleTimeString()}
-            <Button
-              onClick={this.stopInterval}
-              color={this.state.activated === true ? "success" : "danger"}
-            >
-              {this.state.activated == true
-                ? "Arrêter le compteur"
-                : "Redémarrer le compteur"}
-            </Button>
-          </div>
-          <div
-            onDoubleClick={this.decreaseSize}
-            onClick={this.changeSize}
-            style={{
-              width: this.state.size + "px",
-              height: this.state.size + "px",
-              backgroundColor: "green"
-            }}
-          ></div>
+         
+          <div onDoubleClick={this.decreaseSize} onClick={this.changeSize} style={{ width: this.state.size + "px", height: this.state.size + "px", backgroundColor: "green" }} />
 
           <Container style={{ marginTop: "" }}>
             <Row>
@@ -205,7 +177,7 @@ class Home extends Component {
                   </div>
                 </div>
               </Col>
-              <Col sm="4"></Col>
+              <Col sm="4" />
             </Row>
           </Container>
         </section>
@@ -214,12 +186,7 @@ class Home extends Component {
           <CarouselSection />
         </section>
         <div>
-          <Input
-            type="select"
-            name="categorie"
-            value={this.state.categorie}
-            onChange={this.handleSelectChange}
-          >
+          <Input type="select" name="categorie" value={this.state.categorie} onChange={this.handleSelectChange}>
             {this.state.categories.map((categorie, index) => {
               return <option key={index}>{categorie}</option>;
             })}
@@ -229,9 +196,8 @@ class Home extends Component {
           <MapComponent centres={this.state.centres} />
         </div>
 
-        <section className="searchSection"></section>
-      </div>
-    );
+        <section className="searchSection" />
+      </div>;
   }
 }
 

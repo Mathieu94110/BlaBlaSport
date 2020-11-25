@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Head from "next/head";
+import DatePicker from "react-date-picker";
 
 import {
   Alert,
@@ -21,7 +22,8 @@ class CreateMatch extends React.Component {
     super(props);
     this.state = {
       nb_participants: 1,
-      participants: [""]
+      participants: [""],
+      date_start: new Date()
     };
   }
 
@@ -32,6 +34,9 @@ class CreateMatch extends React.Component {
     }
     this.setState({ participants: newParticipants });
   };
+
+  onChangeDateStart = date => this.setState({ date_start: date });
+
   render() {
     return (
       <div>
@@ -69,7 +74,10 @@ class CreateMatch extends React.Component {
                 );
               })}
             </FormGroup>
-
+            <DatePicker
+              onChange={this.onChangeDateStart}
+              value={this.state.date_start}
+            />
             <Button>Submit</Button>
           </Form>
         </div>
